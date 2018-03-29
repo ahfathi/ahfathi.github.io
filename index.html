@@ -1,43 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-ul{
-	list-style-type: none;
-	background-color: #f5f5f5;
-	display: inline-block;
-	float: left;
-	clear: left;
-	margin: 5px;
-	padding: 0;
-}
-ul.vertical li{
-	display: block;
-}
-ul.horizontal li{
-	display: inline-block;
-}
-li a{
-	padding: 8px 16px;
-	display: block;
-	text-decoration: none;
-	color: black;
-}
-li a:hover{
-	background-color: #555;
-	color: white;
-}
-</style>
-</head>
-<body>
-<ul class = "horizontal">
-<li><a href="#a">Home</a></li>
-<li><a href="#a">News</a></li>
-<li><a href="#a">Contact</a></li>
-<li><a href="#a">About</a></li>
-</ul>
-<script type="text/javascript">
-	var x = 5;
-</script>
-</body>
-</html>
+---
+layout: default
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
